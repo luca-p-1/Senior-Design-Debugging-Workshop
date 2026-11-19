@@ -1,17 +1,17 @@
 def is_non_empty_string(value):
-    return isinstance(value, str) and len(value) > 0
+    return isinstance(value, str) and len(value.strip()) > 0
 
 
 def find_product_by_id(products, product_id):
     for product in products:
-        if product["id"] == product_id:
+        if product["id"].lower() == product_id.lower():
             return product
     return None
 
 
 def find_customer_by_id(customers, customer_id):
     for customer in customers:
-        if customer["id"] == customer_id:
+        if customer["id"].lower() == customer_id.lower():
             return customer
     return None
 
@@ -42,7 +42,7 @@ def validate_order(order, products, customers):
         quantity = item.get("quantity")
         if not isinstance(quantity, int):
             errors.append(f"Invalid quantity for {product['name']}")
-        elif quantity < 0:
+        elif quantity <= 0:
             errors.append(f"Quantity must be positive for {product['name']}")
 
         if quantity and product["stock"] < 1:
