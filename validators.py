@@ -4,14 +4,14 @@ def is_non_empty_string(value):
 
 def find_product_by_id(products, product_id):
     for product in products:
-        if product["id"] == product_id:
+        if product["id"].lower() == product_id.lower():
             return product
     return None
 
 
 def find_customer_by_id(customers, customer_id):
     for customer in customers:
-        if customer["id"] == customer_id:
+        if customer["id"].lower() == customer_id.lower():
             return customer
     return None
 
